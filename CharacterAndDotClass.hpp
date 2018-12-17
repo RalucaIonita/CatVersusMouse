@@ -46,14 +46,7 @@ class Dot
       {
         ledMatrix.setLed(0, y, x, k);
       }
-      
-      friend operator==(const Dot& firstDot, const Dot& secondDot)
-      {
-        if(firstDot.getDotX() == secondDot.getDotX() && firstDot.getDotY() == secondDot.getDotY())
-          return 1;
-        else
-          return 0;      
-      }
+
   };
 
 
@@ -80,10 +73,10 @@ public:
       tail.setDotCoordinates(7, 6);
      }
 		}
-	};
+	}
 
 	~Character()
-	{};
+	{}
 
   //getters & setters
   Dot getHead()
@@ -117,85 +110,111 @@ public:
 
   
 	//move
-	Character moveCharacter(int xJoystickValue, int yJoystickValue)
+	Character moveMouse(int xJoystickValue, int yJoystickValue)
 	{
     setCharacter(LOW);
-		if(xJoystickValue > 550 && head.getDotX() != 0)
-			{
-          head.setDotX(head.getDotX() - 1);
-          tail.setDotX(tail.getDotX() - 1);
-			}
-		else
+    
+    //ox
+		if(xJoystickValue > 550)
 		{
-		if(xJoystickValue < 450 && head.getDotX() != 7) 
-			{
-        head.setDotX(head.getDotX() + 1);
-        tail.setDotX(tail.getDotX() + 1);
-			}
-		}
+      //head
+	    if(head.getDotX() != 0)
+         head.setDotX(head.getDotX() - 1);
+        else
+         head.setDotX(7);
 
-		
-		if(yJoystickValue > 550 && head.getDotY() != 1)
-			{
+      //tail
+      if(tail.getDotX() != 0)
+         tail.setDotX(tail.getDotX() - 1);
+        else
+         tail.setDotX(7);
+      
+		}
+     
+	 if(xJoystickValue < 450)
+		  {
+        //head
+		    if(head.getDotX() != 7) 
+          head.setDotX(head.getDotX() + 1);
+        else
+          head.setDotX(0);                                                                        ///////////////////SPACING IN THIS CRAP
+         
+         //tail
+        if(tail.getDotX() != 7)
+          tail.setDotX(tail.getDotX() + 1);
+        else
+          tail.setDotX(0);
+        
+		   }
+
+		//oy
+		if(yJoystickValue > 550)
+		{
+      //head
+		  if(head.getDotY() != 0)
         head.setDotY(head.getDotY() - 1);
+      else
+        head.setDotY(7);
+      
+      //tail
+      if(tail.getDotY() != 0)
         tail.setDotY(tail.getDotY() - 1);
-			}
-		else
-		{
-		if(yJoystickValue < 450 && tail.getDotY() != 6)
-			{
-				head.setDotY(head.getDotY() + 1);
-        tail.setDotY(tail.getDotY() + 1);
-			}
+      else
+        tail.setDotY(7);
 		}
-    setCharacter(HIGH);
    
-	}
- 
-  //operator ==
+		if(yJoystickValue < 450)
+		{
+      //head
+		  if(head.getDotY() != 7)
+		     head.setDotY(head.getDotY() + 1);
+      else
+         head.setDotY(0);
 
-  friend operator==(Character firstCharacter, Character secondCharacter)
-  {
-    if(firstCharacter.head == secondCharacter.head && firstCharacter.tail == secondCharacter.tail)
-      return 1;
-    else
-      return 0;    
-  }
-  
+      //tail
+     if(tail.getDotY() != 7)
+         tail.setDotY(tail.getDotY() + 1);
+      else
+         tail.setDotY(0);
+    }
+    setCharacter(HIGH);
+	} 
+
+
+
   
   void moveCat(Character mouse)
   {
     setCharacter(LOW);
-    
+    delay(100);
     //oy
-    if(mouse.getHead().getDotY() <= head.getDotY() && head.getDotY() != 0)
+    if(mouse.getHead().getDotY() <= head.getDotY() && tail.getDotY()!=0)
     {
-     head.setDotCoordinates(head.getDotX(), head.getDotY()-1);
-     tail.setDotCoordinates(tail.getDotX(), tail.getDotY()-1);
+     head.setDotY(head.getDotY()-1);
+     tail.setDotY(tail.getDotY()-1);
     }
 
-    if(mouse.getHead().getDotY() >= head.getDotY() && head.getDotY() != 7)
+    if(mouse.getHead().getDotY() > head.getDotY() && tail.getDotY()!=7)
     {
-     head.setDotCoordinates(head.getDotX(), head.getDotY()+1);
-     tail.setDotCoordinates(tail.getDotX(), tail.getDotY()+1);
+     head.setDotY(head.getDotY()+1);
+     tail.setDotY(tail.getDotY()+1);
     }
     
 
     //ox
-    if(mouse.getHead().getDotX() <= head.getDotX() && head.getDotX() != 0)
+    if(mouse.getHead().getDotX() <= tail.getDotX())
     {
-     head.setDotCoordinates(head.getDotX()-1, head.getDotY());
-     tail.setDotCoordinates(tail.getDotX()-1, tail.getDotY());
+     head.setDotX(head.getDotX()-1);
+     tail.setDotX(tail.getDotX()-1);
     }
     
-    if(mouse.getHead().getDotX() >= head.getDotX() && head.getDotX() != 7)
+    if(mouse.getHead().getDotX() > tail.getDotX())
     {
-     head.setDotCoordinates(head.getDotX()+1, head.getDotY());
-     tail.setDotCoordinates(tail.getDotX()+1, tail.getDotY());
+     head.setDotX(head.getDotX()+1);
+     tail.setDotX(tail.getDotX()+1);
     }
     
   setCharacter(HIGH);
   }
   
-    
 };

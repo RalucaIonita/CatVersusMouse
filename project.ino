@@ -3,7 +3,7 @@
 Character dummie("mouse"), dummie2("cat");
 int ix, iy;
 
-Dot k;
+int roundNumber = 0;
 
 void setup() {
   lcd.begin(16, 2);
@@ -17,20 +17,15 @@ void setup() {
   
   Serial.begin(9600);
   ledMatrix.shutdown(0, false);
-  ledMatrix.setIntensity(0, 0); // sets brightness
-  ledMatrix.clearDisplay(0);// clear screen
+  ledMatrix.setIntensity(0, 0);
+  ledMatrix.clearDisplay(0);
   pinMode(BUTTON, INPUT_PULLUP);
-  turnOffMatrix();
-  dummie.setCharacter(HIGH);
-  dummie2.setCharacter(HIGH);
-  
+  turnOffMatrix();  
 }
 
 void loop() {
-    ix = analogRead(JOY_X);
-    iy = analogRead(JOY_Y);
-    dummie.moveCharacter(ix, iy);
-    dummie2.moveCat(dummie);
-    delay(100);
-
+      ix = analogRead(JOY_X);
+      iy = analogRead(JOY_Y);
+      dummie.moveMouse(ix, iy);
+      delay(100);
 }
