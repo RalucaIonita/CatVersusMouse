@@ -9,16 +9,13 @@ const LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
 #define NUMBER_OF_LEDS 8
 
 
-
 #define JOY_X A0
 #define JOY_Y A1
 #define BUTTON 1
 #define V0_PIN 9
 
 
-
-
-#define DELAY_MOUSE 20
+#define DELAY_MOUSE 100
 #define DELAY_CAT_LEVEL_1 750
-#define DELAY_CAT_LEVEL_1 500
-#define DELAY_CAT_LEVEL_1 250
+#define DELAY_CAT_LEVEL_2 500
+#define DELAY_CAT_LEVEL_3 250

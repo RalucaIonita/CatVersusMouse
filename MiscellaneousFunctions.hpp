@@ -34,7 +34,7 @@ int checkWinner(Character cat, Character mouse, int& roundNumber) //<----add stu
   {
     if(roundNumber >= 3)
       {
-        delay(100);
+       // delay(100);
         lcd.clear();
         lcd.setCursor(1, 0);
         lcd.print("Winner is:");
@@ -66,21 +66,15 @@ void printRoundNumberOnLCD(int roundNumber)
     lcd.print("Round ");
     lcd.setCursor(10, 0);
     lcd.print(roundNumber+1);
-  
 }
 
 
-int controlDelay(unsigned long& timeGiven, unsigned long delayWanted)
+unsigned long controlDelay(unsigned long& previousTime, unsigned int delayWanted)
 {
-  unsigned long timeNow = millis();
-  if(timeGiven - timeNow >= delayWanted)
-    {
-      timeGiven = timeNow;
-      return 1;
-    }
-  else
-    {
-     // timeGiven = timeNow;
-      controlDelay(timeNow, delayWanted);
-     }  
+  unsigned long currentTime = millis();
+  if(currentTime - previousTime > delayWanted)
+  {
+    previousTime = currentTime;
+    return previousTime;
+  }
 }

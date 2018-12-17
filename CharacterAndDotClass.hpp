@@ -1,3 +1,4 @@
+#include "MiscellaneousFunctions.hpp"
 #include "Setup.hpp"
 
 class Dot
@@ -113,7 +114,7 @@ public:
 	Character moveMouse(int xJoystickValue, int yJoystickValue)
 	{
     setCharacter(LOW);
-    
+    unsigned long timeNow = millis();
     //ox
 		if(xJoystickValue > 550)
 		{
@@ -186,7 +187,7 @@ public:
   void moveCat(Character mouse)
   {
     setCharacter(LOW);
-    delay(100);
+    
     //oy
     if(mouse.getHead().getDotY() <= head.getDotY() && tail.getDotY()!=0)
     {

@@ -1,9 +1,13 @@
 #include "MiscellaneousFunctions.hpp"
+#include "Setup.hpp"
 
 Character dummie("mouse"), dummie2("cat");
 int ix, iy;
 
-int roundNumber = 0;
+int levelNumber = 1;
+
+unsigned long timeNowMouse = 0, timeBeforeMouse = 0;
+unsigned long timeNowCat = 0, timeBeforeCat = 0;
 
 void setup() {
   lcd.begin(16, 2);
@@ -20,12 +24,15 @@ void setup() {
   ledMatrix.setIntensity(0, 0);
   ledMatrix.clearDisplay(0);
   pinMode(BUTTON, INPUT_PULLUP);
-  turnOffMatrix();  
+  turnOffMatrix();
 }
 
 void loop() {
-      ix = analogRead(JOY_X);
-      iy = analogRead(JOY_Y);
-      dummie.moveMouse(ix, iy);
-      delay(100);
+  if(controlDelay(timeNowMouse, DELAY_MOUSE) != timeBeforeMouse)
+      {
+         ix = analogRead(JOY_X);
+         iy = analogRead(JOY_Y);      
+         dummie.moveMouse(ix, iy);
+         timeBeforeMouse = timeNowMouse;
+      }
 }
