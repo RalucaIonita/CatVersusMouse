@@ -28,6 +28,14 @@ void setup() {
 }
 
 void loop() {
+  Serial.println(controlDelay(timeNowMouse, DELAY_MOUSE));
+  
+   if(controlDelay(timeNowCat, DELAY_CAT_LEVEL_1) != timeBeforeCat)
+      {  
+         dummie2.moveCat(dummie);
+         timeBeforeCat = timeNowCat;
+      }
+      
   if(controlDelay(timeNowMouse, DELAY_MOUSE) != timeBeforeMouse)
       {
          ix = analogRead(JOY_X);
@@ -35,4 +43,6 @@ void loop() {
          dummie.moveMouse(ix, iy);
          timeBeforeMouse = timeNowMouse;
       }
+  
+     // Serial.println(controlDelay(timeNowMouse, DELAY_MOUSE));
 }
