@@ -38,6 +38,14 @@ class Dot
 
       Dot()
       {}
+      
+      Dot operator=(const Dot& dot)
+      {
+        x = dot.getDotX();
+        y = dot.getDotY();
+        return *this;
+      }
+      
       ~Dot()
       {}
 
@@ -75,7 +83,7 @@ public:
      }
 		}
 	}
-
+  
 	~Character()
 	{}
 
@@ -100,6 +108,16 @@ public:
   {
     tail.setDotCoordinates(givenDot.getDotX(), givenDot.getDotY());
   }
+
+
+  Character operator=(const Character& character)
+  {
+    head = character.getHead();
+    tail = character.getTail();
+   // return this;
+  }
+
+
  
   
  //set LEDs' states for the character

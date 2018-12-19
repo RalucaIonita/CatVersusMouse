@@ -23,7 +23,7 @@ void turnOffMatrix()
 
 
 
-int checkWinner(Character cat, Character mouse, int& roundNumber) //<----add stuff to this function
+int checkWinner(Character cat, Character mouse) //<----add stuff to this function
 {
   if(
     (cat.getHead().getDotX() == mouse.getHead().getDotX() && cat.getHead().getDotY() == mouse.getHead().getDotY()) 
@@ -32,40 +32,24 @@ int checkWinner(Character cat, Character mouse, int& roundNumber) //<----add stu
      || (cat.getTail().getDotX() == mouse.getHead().getDotX() && cat.getHead().getDotY() == mouse.getTail().getDotY())
      )
   {
-    if(roundNumber >= 3)
-      {
-       // delay(100);
         lcd.clear();
         lcd.setCursor(1, 0);
-        lcd.print("Winner is:");
+        lcd.print("The cat got you!");
         lcd.setCursor(0, 1);
-        lcd.print("plm");
-        roundNumber = 0;
+        unsigned int timeNow = millis();
+        lcd.print("Again? <Yes >No");
         turnOffMatrix();
-        
-      }
-    else
-      roundNumber++;
- // return roundNumber;
-}
-}
-
-Dot generatePowerUp() //this works, but get back to it
-{
-  Dot powerUp;
-  powerUp.setDotX(rand()%8);
-  powerUp.setDotY(rand()%8);
-  return powerUp;
-}
-
-
-void printRoundNumberOnLCD(int roundNumber)
-{
-    lcd.clear();
-    lcd.setCursor(4, 0);
-    lcd.print("Round ");
-    lcd.setCursor(10, 0);
-    lcd.print(roundNumber+1);
+        int indexOx = analogRead(JOY_X);
+     //   if(millis() >= BASIC_DELAY)
+        {
+          if(indexOx <=450)
+            return 1;
+           else
+         if(indexOx >= 550)
+          return 0;
+        }
+  }
+  return -1;
 }
 
 
@@ -77,4 +61,16 @@ unsigned long controlDelay(unsigned long& previousTime, unsigned int delayWanted
     previousTime = currentTime;
     return previousTime;
   }
+}
+
+
+int controlTime(unsigned long& timeSinceGameStart, unsigned int levelTime)
+{
+  if(timeSinceGameStart >= levelTime)
+    {
+      turnOffMatrix();
+      return 0;
+    }
+  else
+    return 1;
 }
