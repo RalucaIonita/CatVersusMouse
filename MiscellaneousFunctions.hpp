@@ -23,7 +23,7 @@ void turnOffMatrix()
 
 
 
-int checkWinner(Character cat, Character mouse) //<----add stuff to this function
+int checkWinner(Character cat, Character mouse)
 {
   if(
     (cat.getHead().getDotX() == mouse.getHead().getDotX() && cat.getHead().getDotY() == mouse.getHead().getDotY()) 
@@ -32,22 +32,22 @@ int checkWinner(Character cat, Character mouse) //<----add stuff to this functio
      || (cat.getTail().getDotX() == mouse.getHead().getDotX() && cat.getHead().getDotY() == mouse.getTail().getDotY())
      )
   {
-        lcd.clear();
-        lcd.setCursor(1, 0);
+     //   lcd.clear();
+        lcd.setCursor(0, 0);
         lcd.print("The cat got you!");
         lcd.setCursor(0, 1);
-        unsigned int timeNow = millis();
         lcd.print("Again? <Yes >No");
         turnOffMatrix();
         int indexOx = analogRead(JOY_X);
-     //   if(millis() >= BASIC_DELAY)
-        {
           if(indexOx <=450)
-            return 1;
+            {
+              lcd.clear();
+              return 1;
+            }
+            
            else
          if(indexOx >= 550)
           return 0;
-        }
   }
   return -1;
 }
@@ -64,9 +64,9 @@ unsigned long controlDelay(unsigned long& previousTime, unsigned int delayWanted
 }
 
 
-int controlTime(unsigned long& timeSinceGameStart, unsigned int levelTime)
+int controlTime(unsigned long& timeSinceLevelStart, unsigned int levelTime)
 {
-  if(timeSinceGameStart >= levelTime)
+  if(timeSinceLevelStart >= levelTime)
     {
       turnOffMatrix();
       return 0;

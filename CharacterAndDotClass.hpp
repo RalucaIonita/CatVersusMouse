@@ -163,7 +163,6 @@ public:
           tail.setDotX(tail.getDotX() + 1);
         else
           tail.setDotX(0);
-        
 		   }
 
 		//oy
