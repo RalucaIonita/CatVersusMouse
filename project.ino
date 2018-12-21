@@ -16,7 +16,9 @@ unsigned long timeSinceStart = 0, lastTryTime = 0;
 unsigned long timeUntilNow = 0;
 
 
+
 void setup() {
+  cleanEEPROMMEmory();
   lcd.begin(16, 2);
   lcd.clear();
   pinMode(V0_PIN, OUTPUT);
@@ -52,21 +54,14 @@ void loop() {
     lcd.clear();
     timeUntilNow = millis();
   }
-  
-  Serial.print("timeSinceStart");
-  Serial.println(timeSinceStart);
 
 
   if(controlTime(timeSinceStart, LEVEL_TIME) == 1 && controlVariable == 2)
   {
     timeSinceStart = millis() - timeUntilNow;
+    Serial.println(timeSinceStart);
 
-    
-  Serial.print("timeSinceStart in if");
-  Serial.println(timeSinceStart);
-
-
-    
+   
     lcd.setCursor(0, 0);
     lcd.print("      Level      ");
     lcd.setCursor(0, 1);
@@ -76,31 +71,28 @@ void loop() {
 
     
     if(controlDelay(timeNowMouse, DELAY_MOUSE) != timeBeforeMouse)
-    {  
+     {  
          mousePlayer.moveMouse(analogRead(JOY_X), analogRead(JOY_Y));
          timeBeforeMouse = timeNowMouse;
-    }
+     }
 
      if(controlDelay(timeNowCat, catDelaysVector[levelNumber]) != timeBeforeCat)
-     {  
+      {  
          catPlayer.moveCat(mousePlayer);
          timeBeforeCat = timeNowCat;
-     }
+      }
 
       
     checkLevelWinner = checkWinner(catPlayer, mousePlayer);
     
     if(checkLevelWinner == 0)
      {
+      
       printScoreOnLCD(levelNumber);
-      if(controlTime(timeSinceStart, BASIC_TIME) == 1)
-        {
-          controlVariable = 0;
-          levelNumber = FIRST_LEVEL;
-        }
+      controlVariable = 0;
+      levelNumber = FIRST_LEVEL;
      }
-     
-     
+
    }
   else
   {
@@ -109,6 +101,7 @@ void loop() {
       levelNumber++;
       printLevelUpOnLCD();      
       controlVariable = 1;
+      checkLevelWinner = -2;
      }
   }
 

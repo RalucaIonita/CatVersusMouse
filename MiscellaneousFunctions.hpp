@@ -21,6 +21,20 @@ void turnOffMatrix()
       }
 }
 
+int controlTime(unsigned long& timeSinceLevelStart, unsigned int levelTime)
+{
+  if(timeSinceLevelStart >= levelTime)
+    {
+      turnOffMatrix();
+      return 0;
+    }
+  else
+    return 1;
+}
+
+
+
+
 
 
 int checkWinner(Character cat, Character mouse)
@@ -37,8 +51,10 @@ int checkWinner(Character cat, Character mouse)
     lcd.setCursor(0, 1);
     lcd.print("Again? <Yes >No");
     turnOffMatrix();
-    int indexOx = analogRead(JOY_X);
-    if(indexOx <=450)
+    int timeNow = 0;
+      timeNow = millis();
+      int indexOx = analogRead(JOY_X);
+    if(indexOx <= 450)
      {
        lcd.clear();
        return 1;
@@ -62,16 +78,6 @@ unsigned long controlDelay(unsigned long& previousTime, unsigned int delayWanted
 }
 
 
-int controlTime(unsigned long& timeSinceLevelStart, unsigned int levelTime)
-{
-  if(timeSinceLevelStart >= levelTime)
-    {
-      turnOffMatrix();
-      return 0;
-    }
-  else
-    return 1;
-}
 
 
 void printAskingForJoystickInputOnLCD()
@@ -94,28 +100,28 @@ void printLevelUpOnLCD()
 }
 
 
-void saveScore(int levelNumber)
+void saveScore(int& levelNumber)
 {
-  
-  float auxiliarVariable = (float)levelNumber;
+  int auxiliarVariable = levelNumber;
   if(levelNumber == 1)
-      EEPROM.put(MEMORY_ADDRESS_FOR_HIGHEST_SCORE, auxiliarVariable);
+      EEPROM.write(MEMORY_ADDRESS_FOR_HIGHEST_SCORE, auxiliarVariable);
       
   if(EEPROM.read(MEMORY_ADDRESS_FOR_HIGHEST_SCORE) < levelNumber)
   {
     cleanEEPROMMEmory();
-    EEPROM.put(MEMORY_ADDRESS_FOR_HIGHEST_SCORE, auxiliarVariable);
+    EEPROM.write(MEMORY_ADDRESS_FOR_HIGHEST_SCORE, auxiliarVariable);
   }
 }
 
 
 void printScoreOnLCD(int& levelNumber)
 {
+ //   saveScore(levelNumber);
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Your score: ");
     lcd.print(levelNumber);
-    lcd.setCursor(0, 1);
+  /*  lcd.setCursor(0, 1);
     lcd.print("Highest score:");
-    lcd.print(EEPROM.read(MEMORY_ADDRESS_FOR_HIGHEST_SCORE));
+    lcd.print(EEPROM.read(MEMORY_ADDRESS_FOR_HIGHEST_SCORE));*/
 }

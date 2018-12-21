@@ -18,8 +18,8 @@ const LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
 
 #define DELAY_MOUSE 100
 
-#define LEVEL_TIME 45000
-#define BASIC_TIME 15000
+#define LEVEL_TIME 20000
+#define BASIC_TIME 10000
 
 #define LAST_LEVEL 8
 #define FIRST_LEVEL 1
