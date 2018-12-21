@@ -2,61 +2,61 @@
 #include "Setup.hpp"
 
 class Dot
+{
+private:
+  int x, y;
+public:
+  //getters & setters
+
+  int getDotX()
   {
-    private:
-      int x, y;
-    public:
-      //getters & setters
+    return x;
+  }
 
-      int getDotX()
-      {
-        return x;
-      }
+  int getDotY()
+  {
+    return y;
+  }
 
-      int getDotY()
-      {
-        return y;
-      }
+  void setDotX(int xValue)
+  {
+    x=xValue;
+  }
 
-      void setDotX(int xValue)
-      {
-        x=xValue;
-      }
+  void setDotY(int yValue)
+  {
+    y=yValue;
+  }
 
-      void setDotY(int yValue)
-      {
-        y=yValue;
-      }
-
-      void setDotCoordinates(int xValue, int yValue)
-      {
-        x=xValue;
-        y=yValue;
-      }
+  void setDotCoordinates(int xValue, int yValue)
+  {
+    x=xValue;
+    y=yValue;
+  }
 
       
-
-      Dot()
-      {}
+  //constructors & destructors
+  Dot()
+  {}
       
-      Dot operator=(const Dot& dot)
-      {
-        x = dot.getDotX();
-        y = dot.getDotY();
-        return *this;
-      }
+  Dot operator=(const Dot& dot)
+  {
+    x = dot.getDotX();
+    y = dot.getDotY();
+    return *this;
+  }
       
-      ~Dot()
-      {}
+  ~Dot()
+   {}
 
 
-      //set LED state for the dot
-      void setDot(int k)
-      {
-        ledMatrix.setLed(0, y, x, k);
-      }
+  //set LED state for the dot
+  void setDot(int k)
+  {
+     ledMatrix.setLed(0, y, x, k);
+  }
 
-  };
+};
 
 
 class Character
@@ -156,7 +156,7 @@ public:
 		    if(head.getDotX() != 7) 
           head.setDotX(head.getDotX() + 1);
         else
-          head.setDotX(0);                                                                        ///////////////////SPACING IN THIS CRAP
+          head.setDotX(0);                                                                        
          
          //tail
         if(tail.getDotX() != 7)

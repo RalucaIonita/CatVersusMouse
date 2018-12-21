@@ -2,11 +2,11 @@
 #include "Setup.hpp"
 
 int ix, iy;
-int k = -2;
+int checkLevelWinner = -2;
 Character mousePlayer("mouse"), catPlayer("cat");
 Character initialMouse("mouse"), initialCat("cat");
 
-int levelNumber = 1;
+int levelNumber = FIRST_LEVEL;
 int controlVariable = 0;
 
 
@@ -34,13 +34,9 @@ void loop() {
   {
     mousePlayer = initialMouse;
     catPlayer = initialCat;
-    lcd.setCursor(0, 0);
-    lcd.print(" Press joystick ");
-    lcd.setCursor(0, 1);
-    lcd.print("button to start.");
-
+    printAskingForJoystickInputOnLCD();
     timeSinceStart = 0;
-    k = -2;
+    checkLevelWinner = -2;
   
     controlVariable = 1;
 }
@@ -48,7 +44,11 @@ void loop() {
   
   if(digitalRead(BUTTON_PIN) == 0 && controlVariable == 1)
   {
+    
+    mousePlayer = initialMouse;
+    catPlayer = initialCat;
     controlVariable = 2;
+    timeSinceStart = 0;
     lcd.clear();
     timeUntilNow = millis();
   }
@@ -76,32 +76,42 @@ void loop() {
 
     
     if(controlDelay(timeNowMouse, DELAY_MOUSE) != timeBeforeMouse)
-      {  
+    {  
          mousePlayer.moveMouse(analogRead(JOY_X), analogRead(JOY_Y));
          timeBeforeMouse = timeNowMouse;
-     }
+    }
 
      if(controlDelay(timeNowCat, catDelaysVector[levelNumber]) != timeBeforeCat)
-      {  
+     {  
          catPlayer.moveCat(mousePlayer);
          timeBeforeCat = timeNowCat;
-      }
+     }
 
       
-    k = checkWinner(catPlayer, mousePlayer);
-    if(k == 0)
-      controlVariable = 0;
-    }
+    checkLevelWinner = checkWinner(catPlayer, mousePlayer);
+    
+    if(checkLevelWinner == 0)
+     {
+      printScoreOnLCD(levelNumber);
+      if(controlTime(timeSinceStart, BASIC_TIME) == 1)
+        {
+          controlVariable = 0;
+          levelNumber = FIRST_LEVEL;
+        }
+     }
+     
+     
+   }
   else
   {
-    if(k == -1)
+    if(checkLevelWinner == -1)
      {
       levelNumber++;
-      
-      controlVariable = 0;
+      printLevelUpOnLCD();      
+      controlVariable = 1;
      }
   }
 
-  if(levelNumber == 8)
-    levelNumber = 1;
+  if(levelNumber == LAST_LEVEL)
+    levelNumber = FIRST_LEVEL;
 }
