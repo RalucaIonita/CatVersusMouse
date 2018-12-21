@@ -16,4 +16,4 @@ If the button is pressed, the game starts with two "characters" (four LEDs in HI
 If you do, you get to the next level. With each level, the Cat starts moving faster.
 If you don't, you get to chose whether you want to try again or not.
 If you chose "Yes", you get back to the level you lost, in the position that the cat got you in and you have less than a second to run from that position.
-If you chose "No", you get back to the start state(level 1), and the LCD will show you the message "Press joystick button to start.".
+If you chose "No", you get back to the start state (level 1), and the LCD will show you the message "Press joystick button to start.".
