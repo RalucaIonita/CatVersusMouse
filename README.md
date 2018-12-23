@@ -26,7 +26,7 @@
 - an USB Arduino cable
 
 
-![alt text](https://github.com/RalucaIonita/CatVersusMouse/issues/1#issue-393780955)
+![The components anssembled](https://github.com/RalucaIonita/CatVersusMouse/issues/1#issue-393780955)
 
 The components assembled
 
@@ -34,12 +34,12 @@ The components assembled
 * Software components
 
 The software of the game has the next components:
-- the ìproject.inoî file
-- the ìSetup.hppî header
-- the ìCharacterAndDot.hppî header
-- the ìMiscellaneousFunctions.hppî header
+- the ‚Äúproject.ino‚Äù file
+- the ‚ÄúSetup.hpp‚Äù header
+- the ‚ÄúCharacterAndDot.hpp‚Äù header
+- the ‚ÄúMiscellaneousFunctions.hpp‚Äù header
 	
-	In ìSetup.hppî header:
+	In ‚ÄúSetup.hpp‚Äù header:
 - the next variables were declared:
 	- ledMatrix (as const LedControl)
 	- lcd (as const LiquidCrystal)
@@ -59,7 +59,7 @@ The software of the game has the next components:
 - the next function was declared:
 	- cleanEEPROMMemory()
 	
-	In ìCharacterAndDotClass.hppî header:
+	In ‚ÄúCharacterAndDotClass.hpp‚Äù header:
 - two classes were declared:
        - Dot, with:
        	- private data:
@@ -70,7 +70,7 @@ The software of the game has the next components:
        		- destructor
        		- getters (for x coordinate and for y coordinate)
        		- setters (for x coordinate, for y coordinate and for both coordinates)
-       		- overloading of ì=î operator
+       		- overloading of ‚Äú=‚Äù operator
        		- setDot (method for setting HIGH or LOW the LED on the matrix with the x and y coordinates)
        - Character, with:
        - private data:
@@ -82,12 +82,12 @@ The software of the game has the next components:
        		- destructor
        		- getters (for head and for tail)
        		- setters (for head and for tail)
-       		- overloading of ì=î operator
+       		- overloading of ‚Äú=‚Äù operator
        		- setCharacter (method for setting HIGH or LOW the LEDs on the matrix with the coordinates of the head and the tail)
        		- moveMouse (method for moving the mouse character
        		- moveCat (method for moving the cat character)
 	
-	In ìMiscellaneousFunctions.hppî header:
+	In ‚ÄúMiscellaneousFunctions.hpp‚Äù header:
 - the next functions were declared:
 	- startGame
 	- turnOffMatrix
@@ -99,7 +99,7 @@ The software of the game has the next components:
 	- saveScore
 	- printScoreOnLCD
 
-	In ìproject.inoî file, the Arduino board gets the input and starts the game. Each moment, it checks the winner and develops the game using the functions previously mentioned.
+	In ‚Äúproject.ino‚Äù file, the Arduino board gets the input and starts the game. Each moment, it checks the winner and develops the game using the functions previously mentioned.
 
 	
 * Built with:
@@ -107,7 +107,7 @@ The software of the game has the next components:
 	- Notepad++
 
 * Game:
-https://drive.google.com/open?id=1nuWeUky8t0izUVQVvhpHhyA7vpLWy9oj
+![Gameplay video](https://drive.google.com/open?id=1nuWeUky8t0izUVQVvhpHhyA7vpLWy9oj)
 
 
 
