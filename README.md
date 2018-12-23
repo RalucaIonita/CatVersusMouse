@@ -28,7 +28,6 @@
 
 ![The components anssembled](https://github.com/RalucaIonita/CatVersusMouse/issues/1#issue-393780955)
 
-The components assembled
 
 
 * Software components
@@ -107,7 +106,7 @@ The software of the game has the next components:
 	- Notepad++
 
 * Game:
-![Gameplay video](https://drive.google.com/open?id=1nuWeUky8t0izUVQVvhpHhyA7vpLWy9oj)
+https://drive.google.com/open?id=1nuWeUky8t0izUVQVvhpHhyA7vpLWy9oj
 
 
 
