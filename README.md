@@ -7,7 +7,7 @@
 	The game starts with the message "Press joystick button to start.".
 	If the button is pressed, the game starts with two "characters" (four LEDs in HIGH state, two for each character). The two LEDs from the left are the "Mouse" character, the other two are the "Cat" character. You are playing as the Mouse. The purpose of the game is to survive 25 seconds running from the Cat.
 	If you do, you get to the next level. With each level, the Cat starts moving faster.
-       If you don't, you get to choose whether you want to try again or not.
+        If you don't, you get to choose whether you want to try again or not.
 	If you chose "Yes", you get back to the level you lost, in the position that the cat got you in and you have less than a second to run from that position.
 	If you chose "No", you get back to the start state (Level 1), and the LCD will show you the message "Press joystick button to start.".
 
@@ -44,17 +44,17 @@ The software of the game has the next components:
 	- lcd (as const LiquidCrystal)
 	- catDelaysVector (as const int, an unidimensional array with 8 elements)
 - the next variables were defined:
-       - NUMBER_OF_LEDS (as 8)
-       - JOY_X (as A0)
-       - JOY_Y (as A1)
-       - BUTTON_PIN (as 13)
-       - V0_PIN (as 9)
-       - DELAY_MOUSE (as 100)
-       - LEVEL_TIME (as 25000)
-       - BASIC_TIME (as 10000)
-       - LAST_LEVEL (as 8)
-       - FIRST_LEVEL (as 1)
-       - MEMORY_ADDRESS_FOR_HIGHEST_SCORE (as 0)
+       * NUMBER_OF_LEDS (as 8)
+       * JOY_X (as A0)
+       * JOY_Y (as A1)
+       * BUTTON_PIN (as 13)
+       * V0_PIN (as 9)
+       * DELAY_MOUSE (as 100)
+       * LEVEL_TIME (as 25000)
+       * BASIC_TIME (as 10000)
+       * LAST_LEVEL (as 8)
+       * FIRST_LEVEL (as 1)
+       * MEMORY_ADDRESS_FOR_HIGHEST_SCORE (as 0)
 - the next function was declared:
 	- cleanEEPROMMemory()
 	
