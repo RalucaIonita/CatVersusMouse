@@ -4,7 +4,7 @@
 #include "LiquidCrystal.h"
 #include "EEPROM.h"
 
-const LedControl ledMatrix = LedControl(12, 11, 10, 1); //DIN, CLK, LOAD, No. DRIVER
+const LedControl ledMatrix = LedControl(12, 11, 10, 1);
 const LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
 
 #define NUMBER_OF_LEDS 8
@@ -18,7 +18,7 @@ const LiquidCrystal lcd(2, 3, 4, 5, 6, 7);
 
 #define DELAY_MOUSE 100
 
-#define LEVEL_TIME 20000
+#define LEVEL_TIME 25000
 #define BASIC_TIME 10000
 
 #define LAST_LEVEL 8

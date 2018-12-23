@@ -99,6 +99,18 @@ void printLevelUpOnLCD()
     lcd.print("  Press button. ");
 }
 
+void printLevelOnLCD()
+{
+    lcd.setCursor(0, 0);
+    lcd.print("      Level      ");
+    lcd.setCursor(0, 1);
+    lcd.print("        ");
+    lcd.print(levelNumber);
+    lcd.print("        ");
+
+}
+
+
 
 void saveScore(int& levelNumber)
 {

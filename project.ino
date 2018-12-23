@@ -18,7 +18,6 @@ unsigned long timeUntilNow = 0;
 
 
 void setup() {
-  cleanEEPROMMEmory();
   lcd.begin(16, 2);
   lcd.clear();
   pinMode(V0_PIN, OUTPUT);
@@ -34,8 +33,9 @@ void setup() {
 void loop() {
   if(controlVariable == 0)
   {
-    mousePlayer = initialMouse;
-    catPlayer = initialCat;
+   /* mousePlayer = initialMouse;
+    catPlayer = initialCat;*/
+    
     printAskingForJoystickInputOnLCD();
     timeSinceStart = 0;
     checkLevelWinner = -2;
@@ -49,10 +49,11 @@ void loop() {
     
     mousePlayer = initialMouse;
     catPlayer = initialCat;
-    controlVariable = 2;
     timeSinceStart = 0;
     lcd.clear();
     timeUntilNow = millis();
+    
+    controlVariable = 2;
   }
 
 
@@ -61,14 +62,7 @@ void loop() {
     timeSinceStart = millis() - timeUntilNow;
     Serial.println(timeSinceStart);
 
-   
-    lcd.setCursor(0, 0);
-    lcd.print("      Level      ");
-    lcd.setCursor(0, 1);
-    lcd.print("        ");
-    lcd.print(levelNumber);
-    lcd.print("        ");
-
+    printLevelOnLCD();
     
     if(controlDelay(timeNowMouse, DELAY_MOUSE) != timeBeforeMouse)
      {  
@@ -85,8 +79,8 @@ void loop() {
       
     checkLevelWinner = checkWinner(catPlayer, mousePlayer);
     
-    if(checkLevelWinner == 0)
-     {
+    if (checkLevelWinner == 0)
+    {
       
       printScoreOnLCD(levelNumber);
       controlVariable = 0;
@@ -96,7 +90,7 @@ void loop() {
    }
   else
   {
-    if(checkLevelWinner == -1)
+    if(checkLevelWinner == -1 && controlVariable == 2)
      {
       levelNumber++;
       printLevelUpOnLCD();      

@@ -6,6 +6,7 @@ class Dot
 private:
   int x, y;
 public:
+
   //getters & setters
 
   int getDotX()
@@ -43,7 +44,7 @@ public:
   {
     x = dot.getDotX();
     y = dot.getDotY();
-    return *this;
+   // return *this;
   }
       
   ~Dot()
@@ -69,17 +70,17 @@ public:
   Character(){};
 	Character(String characterName)
 	{
-		if(characterName == "mouse")
+		if (characterName == "mouse")
 		{
 			head.setDotCoordinates(0, 1);
 			tail.setDotCoordinates(0, 0);
 		}
 		else
 		{
-		if(characterName=="cat")
+		if (characterName == "cat")
 		{
-      head.setDotCoordinates(7, 7);
-      tail.setDotCoordinates(7, 6);
+      head.setDotCoordinates(8, 8);
+      tail.setDotCoordinates(8, 7);
      }
 		}
 	}
@@ -134,63 +135,63 @@ public:
     setCharacter(LOW);
     unsigned long timeNow = millis();
     //ox
-		if(xJoystickValue > 550)
+		if (xJoystickValue > 550)
 		{
       //head
-	    if(head.getDotX() != 0)
+	    if (head.getDotX() != 0)
          head.setDotX(head.getDotX() - 1);
         else
          head.setDotX(7);
 
       //tail
-      if(tail.getDotX() != 0)
+      if (tail.getDotX() != 0)
          tail.setDotX(tail.getDotX() - 1);
         else
          tail.setDotX(7);
       
 		}
      
-	 if(xJoystickValue < 450)
-		  {
+	 if (xJoystickValue < 450)
+	 {
         //head
-		    if(head.getDotX() != 7) 
+		    if (head.getDotX() != 7) 
           head.setDotX(head.getDotX() + 1);
         else
           head.setDotX(0);                                                                        
          
          //tail
-        if(tail.getDotX() != 7)
+        if (tail.getDotX() != 7)
           tail.setDotX(tail.getDotX() + 1);
         else
           tail.setDotX(0);
-		   }
+		}
 
 		//oy
-		if(yJoystickValue > 550)
+		if (yJoystickValue > 550)
 		{
       //head
-		  if(head.getDotY() != 0)
+		  if (head.getDotY() != 0)
         head.setDotY(head.getDotY() - 1);
       else
         head.setDotY(7);
       
       //tail
-      if(tail.getDotY() != 0)
+      if (tail.getDotY() != 0)
         tail.setDotY(tail.getDotY() - 1);
       else
         tail.setDotY(7);
 		}
    
-		if(yJoystickValue < 450)
+		if (yJoystickValue < 450)
 		{
       //head
-		  if(head.getDotY() != 7)
+		  if (head.getDotY() != 7)
 		     head.setDotY(head.getDotY() + 1);
       else
          head.setDotY(0);
 
       //tail
-     if(tail.getDotY() != 7)
+     if (tail.getDotY() != 7)
          tail.setDotY(tail.getDotY() + 1);
       else
          tail.setDotY(0);
@@ -206,13 +207,13 @@ public:
     setCharacter(LOW);
     
     //oy
-    if(mouse.getHead().getDotY() <= head.getDotY() && tail.getDotY()!=0)
+    if (mouse.getHead().getDotY() <= head.getDotY() && tail.getDotY() != 0)
     {
      head.setDotY(head.getDotY()-1);
      tail.setDotY(tail.getDotY()-1);
     }
 
-    if(mouse.getHead().getDotY() > head.getDotY() && tail.getDotY()!=7)
+    if (mouse.getHead().getDotY() > head.getDotY() && tail.getDotY() != 7)
     {
      head.setDotY(head.getDotY()+1);
      tail.setDotY(tail.getDotY()+1);
@@ -220,13 +221,13 @@ public:
     
 
     //ox
-    if(mouse.getHead().getDotX() <= tail.getDotX())
+    if (mouse.getHead().getDotX() <= tail.getDotX())
     {
      head.setDotX(head.getDotX()-1);
      tail.setDotX(tail.getDotX()-1);
     }
     
-    if(mouse.getHead().getDotX() > tail.getDotX())
+    if (mouse.getHead().getDotX() > tail.getDotX())
     {
      head.setDotX(head.getDotX()+1);
      tail.setDotX(tail.getDotX()+1);
