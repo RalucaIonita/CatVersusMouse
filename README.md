@@ -1,5 +1,5 @@
 	
-	#Cat Versus Mouse#
+	##Cat Versus Mouse##
 	
 	This is my first Arduino project, the game "Cat Versus Mouse", on a 8x8 LED matrix.
 
