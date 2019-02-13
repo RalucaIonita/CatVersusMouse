@@ -32,10 +32,7 @@ void setup() {
 
 void loop() {
   if(controlVariable == 0)
-  {
-   /* mousePlayer = initialMouse;
-    catPlayer = initialCat;*/
-    
+  { 
     printAskingForJoystickInputOnLCD();
     timeSinceStart = 0;
     checkLevelWinner = -2;
