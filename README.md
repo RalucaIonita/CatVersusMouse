@@ -1,5 +1,5 @@
 	
-	##Cat Versus Mouse##
+##Cat Versus Mouse##
 	
 	This is my first Arduino project, the game "Cat Versus Mouse", on a 8x8 LED matrix.
 
@@ -42,11 +42,11 @@ The software of the game has the next components:
 * the “MiscellaneousFunctions.hpp” header
 	
 	In “Setup.hpp” header:
-* the next variables were declared:
+- the next variables were declared:
 	* ledMatrix (as const LedControl)
 	* lcd (as const LiquidCrystal)
 	* catDelaysVector (as const int, an unidimensional array with 8 elements)
-* the next variables were defined:
+- the next variables were defined:
        * NUMBER_OF_LEDS (as 8)
        * JOY_X (as A0),
        * JOY_Y (as A1),
@@ -58,12 +58,12 @@ The software of the game has the next components:
        * LAST_LEVEL (as 8)
        * FIRST_LEVEL (as 1)
        * MEMORY_ADDRESS_FOR_HIGHEST_SCORE (as 0)
-* the next function was declared:
+- the next function was declared:
 	* cleanEEPROMMemory()
 	
 	In “CharacterAndDotClass.hpp” header:
-* two classes were declared:
-       * Dot, with:
+- two classes were declared:
+       + Dot, with:
        		* private data:
        			* x (integer, coordinate on ox axis)
        			* y (integer, coordinate on oy axis)
@@ -74,7 +74,7 @@ The software of the game has the next components:
        			* setters (for x coordinate, for y coordinate and for both coordinates)
        			* overloading of “=” operator
        			* setDot (method for setting HIGH or LOW the LED on the matrix with the x and y coordinates)
-       * Character, with:
+       + Character, with:
        		* private data:
        			* head (Dot)
        			* tail (Dot)
